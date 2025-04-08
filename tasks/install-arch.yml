@@ -1,0 +1,9 @@
+---
+- name: Install Nvidia driver
+  community.general.pacman:
+    name: "{{ nvidia_driver_arch_packages }}"
+    state: "{{ nvidia_driver_package_state }}"
+    executable: yay
+    extra_args: --builddir /var/cache/yay
+  register: install_driver
+  environment: "{{proxy_env if proxy_env is defined else {}}}"

@@ -44,3 +44,16 @@ nvidia_driver_ubuntu_cuda_repo_baseurl: "https://developer.download.nvidia.com/c
 nvidia_driver_ubuntu_cuda_keyring_package: "cuda-keyring_1.0-1_all.deb"
 nvidia_driver_ubuntu_cuda_keyring_url: "{{ nvidia_driver_ubuntu_cuda_repo_baseurl }}/{{ nvidia_driver_ubuntu_cuda_keyring_package }}"
 nvidia_driver_ubuntu_cuda_package: "cuda-drivers-{{ nvidia_driver_ubuntu_branch }}"
+
+##############################################################################
+# Arch Linux                                                                 #
+##############################################################################
+
+# Driver branch to install with Ubuntu
+nvidia_driver_arch_branch: "{{ nvidia_driver_branch | ternary(nvidia_driver_branch+'xx', '') }}"
+
+nvidia_driver_arch_suffix: "{{ nvidia_driver_arch_branch | ternary('-'+nvidia_driver_arch_branch, '') }}"
+
+nvidia_driver_arch_packages:
+- "nvidia{{ nvidia_driver_arch_suffix }}-dkms"
+- "nvidia{{ nvidia_driver_arch_suffix }}-utils"

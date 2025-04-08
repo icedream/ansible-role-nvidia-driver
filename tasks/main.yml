@@ -17,6 +17,10 @@
   include_tasks: install-redhat.yml
   when: ansible_os_family == 'RedHat'
 
+- name: arch install tasks
+  include_tasks: install-arch.yml
+  when: ansible_os_family == 'Archlinux' or ansible_os_family == 'Arch Linux'
+
 - name: create persistenced override dir
   file:
     path: /etc/systemd/system/nvidia-persistenced.service.d/
