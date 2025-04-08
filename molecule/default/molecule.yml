@@ -99,6 +99,14 @@ platforms:
 #    pre_build_image: true
 #    privileged: true
 
+  - name: arch
+    image: ghcr.io/artis3n/docker-arch-ansible
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: /sbin/init
+    pre_build_image: true
+    privileged: true
+
 provisioner:
   name: ansible
   ansible_args:
